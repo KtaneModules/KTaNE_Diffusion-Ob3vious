@@ -118,15 +118,15 @@ public class diffusionScript : MonoBehaviour {
     }
 
 #pragma warning disable 414
-    private string TwitchHelpMessage = "'!{0} set 1 A 12 0' to set those positions from top left clockwise. '!{0} inspect 1 2' to highlight them and inspect their values.";
+    private string TwitchHelpMessage = "'!{0} set 01 A 12 0' to set those positions from top left clockwise. '!{0} inspect 01 02' to highlight them and inspect their values.";
 #pragma warning restore 414
     IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;
         command = command.ToLowerInvariant();
-        if (Regex.IsMatch(command, @"^set(\s(1|2|3|4|5|6|7|8|9|10|11|12)\s(0|a|b))+$"))
+        if (Regex.IsMatch(command, @"^set(\s(01|02|03|04|05|06|07|08|09|10|11|12)\s(0|a|b))+$"))
         {
-            MatchCollection matches = Regex.Matches(command.Replace("set", ""), @"(1|2|3|4|5|6|7|8|9|10|11|12)\s(0|a|b)");
+            MatchCollection matches = Regex.Matches(command.Replace("set", ""), @"(01|02|03|04|05|06|07|08|09|10|11|12)\s(0|a|b)");
             foreach (Match match in matches)
             {
                 Debug.Log(match.ToString());
@@ -140,9 +140,9 @@ public class diffusionScript : MonoBehaviour {
             }
             yield return "solve";
         }
-        else if(Regex.IsMatch(command, @"^inspect(\s(1|2|3|4|5|6|7|8|9|10|11|12))+$"))
+        else if(Regex.IsMatch(command, @"^inspect(\s(01|02|03|04|05|06|07|08|09|10|11|12))+$"))
         {
-            MatchCollection matches = Regex.Matches(command.Replace("inspect", ""), @"(1|2|3|4|5|6|7|8|9|10|11|12)");
+            MatchCollection matches = Regex.Matches(command.Replace("inspect", ""), @"\s(01|02|03|04|05|06|07|08|09|10|11|12)");
             foreach (Match match in matches)
             {
                 Debug.Log(match.ToString());
